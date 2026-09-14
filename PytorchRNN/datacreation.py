@@ -2,7 +2,7 @@ import os
 import torch
 from string import ascii_letters
 from sklearn.model_selection import train_test_split
-import unidecode    
+from unidecode import unidecode  
 
 # Data directory
 data_dir = "./data/names"
@@ -37,7 +37,7 @@ def load_data() -> tuple[list[tuple[torch.Tensor, torch.Tensor]], list[tuple[tor
     # Loops over every file in the data/names directory
     for file in os.listdir(data_dir):
         # Joins directory and file name to create a full path to the file and opens it
-        with open(os.path.join(data_dir, file)) as f:
+        with open(os.path.join(data_dir, file), encoding="utf-8") as f:
             # Splits the file name at the '.' and takes the first part as the language name
             lang = file.split(".")[0]
             # Reads name in each line in the file, strips whitespace from the right side, and converts it to ASCII using unidecode
