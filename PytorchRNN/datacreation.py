@@ -12,7 +12,12 @@ lang2label = {
     # so uses name of the file as the key and the label as the value starting from 0
     file_name.split(".")[0]: torch.tensor([i], dtype=torch.long)
     for i, file_name in enumerate(os.listdir(data_dir))
+    # Creates a tensor of shape (1,) with the label as the value and data type as long
+    # and gives that tensor as the value for the key in the dictionary with key being the language name
 }
+# Creates a mapping from label to language
+label2lang = {label.item(): lang for lang, label in lang2label.items()}
+
 # Total languages
 num_langs = len(lang2label)
 # Create a mapping from character to index uses the 52 ascii characters (uppercase and lowercase) plus space, period, comma, colon, semicolon, hyphen, and apostrophe
@@ -72,5 +77,5 @@ def load_data() -> tuple[list[tuple[torch.Tensor, torch.Tensor]], list[tuple[tor
         (tensor_names[i], target_langs[i])
         for i in test_idx
     ]
-
+    # Returns the train and test datasets, number of languages, and number of letters
     return train_dataset, test_dataset, num_langs, num_letters
