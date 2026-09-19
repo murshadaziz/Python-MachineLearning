@@ -1,10 +1,8 @@
 import random
 
-
 import torch
 from torch import nn
 import torch.nn.functional as F
-from unidecode import unidecode
 import datacreation 
 
 # Set random seed for reproducibility
@@ -105,7 +103,7 @@ def test(model, test_dataset):
     print(f"Accuracy: {num_correct / num_samples * 100:.4f}%")
 
 # Function to predict the language of a given name using the trained model
-def myrnn_predict(model, name):
+def simplernn_predict(model, name):
     model.eval()
     tensor_name = datacreation.name2tensor(name)
     with torch.no_grad():
@@ -136,11 +134,11 @@ def main():
     test(model, test_dataset)
 
     # Example prediction
-    name = "Ahmed"
-    predicted_language = myrnn_predict(model, name)
-    print(f"The predicted language for the name '{name}' is: {predicted_language}")
     name = "Ali"
-    predicted_language = myrnn_predict(model, name)
+    predicted_language = simplernn_predict(model, name)
+    print(f"The predicted language for the name '{name}' is: {predicted_language}")
+    name = "Ahmed"
+    predicted_language = simplernn_predict(model, name)
     print(f"The predicted language for the name '{name}' is: {predicted_language}")
 
 if __name__ == "__main__":
