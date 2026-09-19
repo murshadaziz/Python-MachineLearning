@@ -131,15 +131,15 @@ def main():
     train_dataset,
     criterion,
     optimizer,
-    num_epochs=3
+    num_epochs=1
     )
     test(model, test_dataset)
 
     # Example prediction
-    name = "Murshad"
+    name = "Ahmed"
     predicted_language = myrnn_predict(model, name)
     print(f"The predicted language for the name '{name}' is: {predicted_language}")
-    name = "Samantha"
+    name = "Ali"
     predicted_language = myrnn_predict(model, name)
     print(f"The predicted language for the name '{name}' is: {predicted_language}")
 
