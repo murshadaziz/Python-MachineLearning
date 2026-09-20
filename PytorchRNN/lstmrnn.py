@@ -132,7 +132,7 @@ def main():
     test(model, test_dataset)
 
     # Example predictions
-    for name in ["Qin", "Slaveya"]:
+    for name in ["Qin", "Slaveya", "John", "Hamood"]:
         predicted_language = lstm_predict(model, name)
         print(
             f"The predicted language for the name "
